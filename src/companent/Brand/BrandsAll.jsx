@@ -4,7 +4,6 @@ import BrandCrad from "./BrandCrad";
 
 const BrandsAll = () => {
     const {brands} = useBrands()
-    console.log(brands);
     return (
         <>
             <ShareTitle heading="Brand Mobile" title="Unlock Mobile Marketing"/>

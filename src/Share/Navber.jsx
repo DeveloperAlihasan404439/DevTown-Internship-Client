@@ -22,7 +22,7 @@ const Navber = () => {
                   <GiHamburgerMenu />
                 </label>
               </div>
-              <div className="drawer-side mt-10">
+              <div className="drawer-side mt-16">
                 <label
                   htmlFor="my-drawer-4"
                   aria-label="close sidebar"
@@ -63,7 +63,7 @@ const Navber = () => {
                         Log In
                       </Link>
                       <Link
-                        to="/signUp"
+                        to="/singup"
                         className="py-1 px-5 bg-[#07163d] text-center hover:bg-[#01040a] rounded"
                       >
                         Sign Up
@@ -76,7 +76,7 @@ const Navber = () => {
           </div>
           <div className="flex items-center gap-5">
             <img src={icon} alt="" className="w-[50px] h-[50px] rounded-[50%]"/>
-            <h1 className="text-xl font-medium tracking-[3px]">
+            <h1 className="text-lg md:text-xl font-medium tracking-[3px]">
             Digital Marketing
             </h1>
           </div>
@@ -84,7 +84,9 @@ const Navber = () => {
         <div className="hidden lg:flex w-[70%]">
           <ul className="w-full flex gap-3 items-center justify-end text-lg">
             <Link to="/">Home</Link>
+            <Link to="/">Add Prodack</Link>
             <Link to="/contact">Contack Us</Link>
+            <Link to="/">Shop</Link>
             {user ? (
               <>
                 <div className=" border border-[#01040a] rounded-[50%] w-[40px] h-[40px]">
@@ -110,7 +112,7 @@ const Navber = () => {
                   Log In
                 </Link>
                 <Link
-                  to="/signUp"
+                  to="/singup"
                   className="py-1 px-5 bg-[#07163d] hover:bg-[#01040a] rounded"
                 >
                   Sign Up

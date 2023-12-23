@@ -10,7 +10,7 @@ const BrandCrad = ({ brand }) => {
             className="h-[350px] rounded-lg"
           />
           <div className="content flex flex-col items-center justify-center">
-        <h1 className='text-2xl font-medium tex-white'>{brand_name}</h1>
+        <h1 className='text-2xl font-medium tex-white tracking-[3px] uppercase'>{brand_name}</h1>
       </div>
       </div>
 
