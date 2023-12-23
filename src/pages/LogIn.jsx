@@ -34,12 +34,13 @@ const LogIn = () => {
   const googleLogin = () => {
     googleUser().then((result) => {
       if (result?.user) {
+        console.log(result.user);
         const userInfo = {
           email: result.user?.email,
           name: result.user?.displayName,
           photo: result.user?.photoURL,
         };
-        axiosSecure.post("/user", userInfo).then((res) => {
+        axiosSecure.post("/usersdata", userInfo).then((res) => {
           if (res.data.insertedId) {
             navigate(location?.state ? location?.state : "/"); 
             Swal.fire({

@@ -4,7 +4,6 @@ import mobilebanner from '../assets/images/mobile-banner.png'
 import ShareTitle from "../Share/ShareTitle";
 const MobileBrand = () => {
     const loaderMobile = useLoaderData()
-    console.log(loaderMobile);
     return (
         <>
         <img src={mobilebanner} alt="" className="w-full"/>

@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import Auth from "./AuthProvider/Auth";
 import { GiHamburgerMenu } from "react-icons/gi";
-import icon from '../assets/images/images.png'
+import { FaShoppingCart } from "react-icons/fa";
+import icon from "../assets/images/images.png";
 const Navber = () => {
-    const {user,logout} = Auth()
-    return (
-        <div
+  const { user, logout } = Auth();
+  return (
+    <div
       className={`border-b border-[#3D8AD0] bg-gradient-to-r from-[#07163d] to-[#3D8AD0] shadow sticky top-0 left-0 z-30`}
     >
       <div className="flex items-center justify-between lg:py-3 text-white md:w-11/12 mx-auto">
@@ -75,19 +76,30 @@ const Navber = () => {
             </div>
           </div>
           <div className="flex items-center gap-5">
-            <img src={icon} alt="" className="w-[50px] h-[50px] rounded-[50%]"/>
+            <img
+              src={icon}
+              alt=""
+              className="w-[50px] h-[50px] rounded-[50%]"
+            />
             <h1 className="text-lg md:text-xl font-medium tracking-[3px]">
-            Digital Marketing
+              Digital Marketing
             </h1>
           </div>
         </div>
         <div className="hidden lg:flex w-[70%]">
           <ul className="w-full flex gap-3 items-center justify-end text-lg">
             <Link to="/">Home</Link>
-            <Link to="/">All Prodack</Link>
+            <Link to="/allProducts">All Product</Link>
             <Link to="/">Add Prodack</Link>
             <Link to="/contact">Contack Us</Link>
-            <Link to="/">Shop</Link>
+            <Link to="/">
+              <div className="indicator">
+                <button className="py-1 px-3 bg-[#1A4072] text-center text-white rounded"><FaShoppingCart/></button>
+                <span className="indicator-item badge badge-secondary bottom-0">
+                  0
+                </span>
+              </div>
+            </Link>
             {user ? (
               <>
                 <div className=" border border-[#01040a] rounded-[50%] w-[40px] h-[40px]">
