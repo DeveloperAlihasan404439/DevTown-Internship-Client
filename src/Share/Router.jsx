@@ -5,6 +5,7 @@ import SignUp from "../pages/SignUp";
 import LogIn from "../pages/LogIn";
 import MobileBrand from "../pages/MobileBrand";
 import AllProdack from "../pages/AllProdack";
+import BuyNowProducts from "../pages/BuyNowProducts";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             {
                 path: '/allProducts',
                 element: <AllProdack/>
+            },
+            {
+                path: '/buynow',
+                element: <BuyNowProducts/>
             },
             {
                 path: '/singup',

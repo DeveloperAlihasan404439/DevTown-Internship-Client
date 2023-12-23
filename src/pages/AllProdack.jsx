@@ -3,37 +3,47 @@ import useAxios from "../Share/Hooks/useAxios";
 import ShareTitle from "../Share/ShareTitle";
 import AllProdackCrad from "../companent/AllProdackCrad";
 import mobilebanner from "../assets/images/mobile-banner.png";
-// import InfiniteScroll from "react-infinite-scroll-component";
+import Loading from "../companent/Loading";
 const AllProdack = () => {
   const [brand, setBrand] = useState("");
   const [search, setSearch] = useState("");
   const [allProducts, setAllProducts] = useState([]);
+  const [loader, setLoader] = useState(true);
   const axiosSecure = useAxios();
 
   useEffect(() => {
-    axiosSecure.get("/mobile").then((res) => setAllProducts(res.data));
+    axiosSecure.get("/mobile").then((res) => {
+      setAllProducts(res.data);
+      setLoader(false);
+    });
   }, [axiosSecure]);
-
+  //------------ search product start code ----------------
   function brandSearch(allProducts, brand, search) {
     let brandSearchAll = allProducts;
+    console.log(search, "line 18");
     if (search) {
+      console.log(search, "line 19");
       brandSearchAll = brandSearchAll.filter(
         ({ name, price, os, memory, processor, type }) =>
-          (name && name.toLowerCase() === search.toLowerCase()) ||
-          (os && os=== search) ||
-          (memory && memory.toLowerCase() === search.toLowerCase()) ||
-          (processor && processor.toLowerCase() === search.toLowerCase()) ||
-          (type && type.toLowerCase() === search.toLowerCase()) ||
-          (price && parseInt(price) === parseInt(search))
+          (name && name.toLowerCase().includes(search.toLowerCase())) ||
+          (memory && memory.toLowerCase().includes(search.toLowerCase())) ||
+          (processor &&
+            processor.toLowerCase().includes(search.toLowerCase())) ||
+          (type && type.toLowerCase().includes(search.toLowerCase())) ||
+          (os && os.toLowerCase().includes(search.toLowerCase())) ||
+          (price && price.toString().includes(search))
       );
     }
-    if(brand){
-        brandSearchAll = brandSearchAll.filter(branddata=> branddata.brand_name === brand )
+    if (brand) {
+      brandSearchAll = brandSearchAll.filter(
+        (branddata) => branddata.brand_name === brand
+      );
     }
     return brandSearchAll;
   }
   const brandData = brandSearch(allProducts, brand, search);
- 
+
+
   return (
     <>
       <img src={mobilebanner} alt="" className="w-full" />
@@ -138,28 +148,17 @@ const AllProdack = () => {
           </select>
         </div>
       </div>
-      <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {brandData?.map((product) => (
-          <AllProdackCrad key={product._id} product={product} />
-        ))}
-      </div>
-      {/* <InfiniteScroll
-        dataLength={gallery.length}
-        next={fetchMoreData}
-        hasMore={true} // To indicate whether more items can be loaded
-        loader={<h4>Loading...</h4>}
-        endMessage={
-          <p style={{ textAlign: "center", background: "red" }}>
-            <b>infinite scroll</b>
-          </p>
-        }
-      >
-        <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {allProducts?.map((product) => (
-            <AllProdackCrad key={product._id} product={product} />
-          ))}
-        </div>
-      </InfiniteScroll> */}
+      {loader ? (
+        <Loading />
+      ) : (
+        <>
+          <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {brandData?.map((product) => (
+              <AllProdackCrad key={product._id} product={product} />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 };

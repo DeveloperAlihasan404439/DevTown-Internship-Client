@@ -1,8 +1,19 @@
-# React + Vite
+# pagination code  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+import ResponsivePagination from "react-responsive-pagination";
+import 'react-responsive-pagination/themes/classic.css';
 
-Currently, two official plugins are available:
+const ItemsPerPage = 15;
+const indexOfLastItem = currentPage \* ItemsPerPage;
+const indexOfFirstItem = indexOfLastItem - ItemsPerPage;
+const currentItems = brandData?.slice(indexOfFirstItem, indexOfLastItem);
+const totalPages = Math.ceil(brandData.length / ItemsPerPage);
+console.log(currentItems);
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<div className="w-full lg:w-[400px] m-auto py-5">
+    <ResponsivePagination
+        current={currentPage}
+        total={totalPages}
+        onPageChange={setCurrentPage}
+    />
+</div>

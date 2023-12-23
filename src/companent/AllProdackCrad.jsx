@@ -1,6 +1,41 @@
+import Swal from "sweetalert2";
+import Auth from "../Share/AuthProvider/Auth";
+import useAxios from "../Share/Hooks/useAxios";
+import { useNavigate } from "react-router-dom";
+
 const AllProdackCrad = ({product}) => {
+    const navigate = useNavigate()
+    const {user} = Auth()
+    const axiosSecure = useAxios()
+
     const { brand_image, brand_name, memory, type, processor, price, os, name } =
     product;
+
+    const hendelShopClick = ()=>{
+        const buynowInfo = {
+            brand_name: brand_name,
+            name: name,
+            price: price,
+            user_name: user?.displayName,
+            user_email: user?.email,
+            user_photo: user?.photoURL,
+        }
+        axiosSecure.post('/buynow', buynowInfo)
+        .then(res => {
+            if(res.data.insertedId){
+            navigate("/buynow");
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Successfull Buy Now Product Added",
+                    showConfirmButton: false,
+                    background: "#07163d",
+                    color: "white",
+                    timer: 2000,
+                  });
+            }
+        })
+    }
   return (
     <div>
       <div className="card card-compact bg-gradient-to-r from-[#07163d] to-[#3D8AD0] shadow-xl h-full relative">
@@ -25,7 +60,7 @@ const AllProdackCrad = ({product}) => {
             <p className="text-lg">Memory : {memory}</p>
             <p className="text-lg">Price : {price}</p>
           </div>
-          <div className="card-actions absolute left-0 bottom-0 w-full">
+          <div onClick={hendelShopClick} className="card-actions absolute left-0 bottom-0 w-full">
             <button className="btn border-none text-lg text-white bg-gradient-to-t from-[#07163d] to-[#3D8AD0] w-full hover:bg-gradient-to-l hover:from-[#00091f] hover:to-[#1388f5]">Buy Now</button>
           </div>
         </div>

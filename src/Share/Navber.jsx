@@ -3,8 +3,10 @@ import Auth from "./AuthProvider/Auth";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaShoppingCart } from "react-icons/fa";
 import icon from "../assets/images/images.png";
+import useBuyNowProducts from "./Hooks/useBuyNowProducts";
 const Navber = () => {
   const { user, logout } = Auth();
+  const { buyNow } = useBuyNowProducts()
   return (
     <div
       className={`border-b border-[#3D8AD0] bg-gradient-to-r from-[#07163d] to-[#3D8AD0] shadow sticky top-0 left-0 z-30`}
@@ -92,11 +94,13 @@ const Navber = () => {
             <Link to="/allProducts">All Product</Link>
             <Link to="/">Add Prodack</Link>
             <Link to="/contact">Contack Us</Link>
-            <Link to="/">
+            <Link to="/buynow" className="mr-5">
               <div className="indicator">
                 <button className="py-1 px-3 bg-[#1A4072] text-center text-white rounded"><FaShoppingCart/></button>
                 <span className="indicator-item badge badge-secondary bottom-0">
-                  0
+                  {
+                    buyNow?buyNow.length:0
+                  }+
                 </span>
               </div>
             </Link>
