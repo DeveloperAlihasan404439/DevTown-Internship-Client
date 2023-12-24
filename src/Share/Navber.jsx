@@ -9,7 +9,7 @@ const Navber = () => {
   const { user, logout } = Auth();
   const { usersdata } = useUsers();
   const { buyNow } = useBuyNowProducts();
-  const dashboard = usersdata.find(roll => roll.email === user?.email)
+  const dashboard = usersdata.find((roll) => roll.email === user?.email);
 
   return (
     <div
@@ -50,8 +50,24 @@ const Navber = () => {
                           {user.displayName}
                         </h1>
                       </div>
-                      <Link to="/">Home</Link>
-                      <Link to="/contact">Contact Us</Link>
+
+                      <Link to="/" className="py-1 px-5 bg-[#07163d] text-center hover:bg-[#01040a] rounded ">Home</Link>
+                      <Link to="/allProducts" className="py-1 px-5 bg-[#07163d] text-center hover:bg-[#01040a] rounded">All Product</Link>
+                      {dashboard.roll ? (
+                        <Link to="/dashboard/users" className="py-1 px-5 bg-[#07163d] text-center hover:bg-[#01040a] rounded">Dashboard</Link>
+                      ) : (
+                        ""
+                      )}
+                      <Link to="/buynow" className="py-1 px-5 bg-[#07163d] text-center hover:bg-[#01040a] rounded">
+                        <div className="indicator">
+                          <button className="py-1 px-3 bg-[#1A4072] text-center text-white rounded">
+                            <FaShoppingCart />
+                          </button>
+                          <span className="indicator-item badge badge-secondary bottom-0">
+                            {buyNow ? buyNow.length : 0}+
+                          </span>
+                        </div>
+                      </Link>
                       <button
                         onClick={logout}
                         className="py-1 px-5 bg-[#07163d] hover:bg-[#01040a] rounded"
@@ -61,17 +77,17 @@ const Navber = () => {
                     </>
                   ) : (
                     <>
-                      <Link to="/">Home</Link>
-                      <Link to="/contact">Contact Us</Link>
+                      <Link to="/" className="py-1 px-5 text-center bg-[#07163d] hover:bg-[#01040a] rounded">Home</Link>
+                      <Link to="/allProducts" className="py-1 px-5 text-center bg-[#07163d] hover:bg-[#01040a] rounded">All Product</Link>
                       <Link
                         to="/login"
-                        className="py-1 px-5 bg-[#07163d] text-center hover:bg-[#01040a] rounded"
+                        className="py-1 px-5 text-center bg-[#07163d] hover:bg-[#01040a] rounded"
                       >
                         Log In
                       </Link>
                       <Link
                         to="/singup"
-                        className="py-1 px-5 bg-[#07163d] text-center hover:bg-[#01040a] rounded"
+                        className="py-1 px-5 text-center bg-[#07163d] hover:bg-[#01040a] rounded"
                       >
                         Sign Up
                       </Link>
@@ -99,13 +115,11 @@ const Navber = () => {
 
             {user ? (
               <>
-                <Link to="/">Add Prodack</Link>
                 {dashboard.roll ? (
-                    <Link to="/dashboard/users">
-                      Dashboard
-                    </Link>
-                  ) : ""
-                }
+                  <Link to="/dashboard/users">Dashboard</Link>
+                ) : (
+                  ""
+                )}
                 <Link to="/buynow" className="mr-5">
                   <div className="indicator">
                     <button className="py-1 px-3 bg-[#1A4072] text-center text-white rounded">

@@ -20,9 +20,7 @@ const AllProdack = () => {
   //------------ search product start code ----------------
   function brandSearch(allProducts, brand, search) {
     let brandSearchAll = allProducts;
-    console.log(search, "line 18");
     if (search) {
-      console.log(search, "line 19");
       brandSearchAll = brandSearchAll.filter(
         ({ name, price, os, memory, processor, type }) =>
           (name && name.toLowerCase().includes(search.toLowerCase())) ||

@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
             {
                 path: '/mobileBrand/:brandName',
                 element: <PriveatRout><MobileBrand/></PriveatRout>,
-                loader: ({params})=>fetch(`http://localhost:5000/brand/mobile/${params.brandName}`)
+                loader: ({params})=>fetch(`https://internship-task-devtown.vercel.app/brand/mobile/${params.brandName}`)
             },
             {
                 path: '/allProducts',
