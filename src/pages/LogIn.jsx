@@ -117,11 +117,11 @@ const LogIn = () => {
           <button
             onClick={googleLogin}
             aria-label="Log in with Google"
-            className="p-3 rounded-sm"
+            className="p-3 text-4xl"
           >
             <FcGoogle />
           </button>
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button aria-label="Log in with GitHub" className="p-3 text-4xl">
             <FaGithub />
           </button>
         </div>

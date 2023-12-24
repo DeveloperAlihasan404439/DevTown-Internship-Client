@@ -4,7 +4,6 @@ import Loading from "../companent/Loading";
 
 const BuyNowProducts = () => {
   const { buyNow, isLoading, refetch } = useBuyNowProducts();
-  console.log(buyNow);
   return (
     <div >
         <div className="relative">

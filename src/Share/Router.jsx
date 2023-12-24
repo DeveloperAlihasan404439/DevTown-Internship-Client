@@ -6,6 +6,11 @@ import LogIn from "../pages/LogIn";
 import MobileBrand from "../pages/MobileBrand";
 import AllProdack from "../pages/AllProdack";
 import BuyNowProducts from "../pages/BuyNowProducts";
+import PriveatRout from "./AuthProvider/PriveatRout";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import UsersData from "../pages/Dashboard/UsersData";
+import AllProducts from "../pages/Dashboard/AllProducts";
+import AdminBuyNow from "../pages/Dashboard/AdminBuyNow";
 
 export const router = createBrowserRouter([
     {
@@ -18,16 +23,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/mobileBrand/:brandName',
-                element: <MobileBrand/>,
+                element: <PriveatRout><MobileBrand/></PriveatRout>,
                 loader: ({params})=>fetch(`http://localhost:5000/brand/mobile/${params.brandName}`)
             },
             {
                 path: '/allProducts',
-                element: <AllProdack/>
+                element: <PriveatRout><AllProdack/></PriveatRout>
             },
             {
                 path: '/buynow',
-                element: <BuyNowProducts/>
+                element: <PriveatRout><BuyNowProducts/></PriveatRout>
             },
             {
                 path: '/singup',
@@ -36,6 +41,24 @@ export const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <LogIn/>
+            },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard/>,
+        children: [
+            {
+                path: '/dashboard/users',
+                element: <UsersData/>
+            },
+            {
+                path: '/dashboard/products',
+                element: <AllProducts/>
+            },
+            {
+                path: '/dashboard/buynow',
+                element: <AdminBuyNow/>
             },
         ]
     }

@@ -19,6 +19,7 @@ const AllProdackCrad = ({product}) => {
             user_name: user?.displayName,
             user_email: user?.email,
             user_photo: user?.photoURL,
+            state: 'Processin'
         }
         axiosSecure.post('/buynow', buynowInfo)
         .then(res => {
