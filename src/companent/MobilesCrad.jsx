@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxios from "../Share/Hooks/useAxios";
+import Auth from "../Share/AuthProvider/Auth";
 
 const MobilesCrad = ({ mobile }) => {
+  const {user} = Auth()
   const navigate = useNavigate()
   const axiosSecure = useAxios()
   const hendelShopClick = ()=>{
@@ -15,6 +17,7 @@ const MobilesCrad = ({ mobile }) => {
         user_photo: user?.photoURL,
         state: 'Processin'
     }
+
     axiosSecure.post('/buynow', buynowInfo)
     .then(res => {
         if(res.data.insertedId){

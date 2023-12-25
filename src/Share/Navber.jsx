@@ -9,7 +9,7 @@ const Navber = () => {
   const { user, logout } = Auth();
   const { usersdata } = useUsers();
   const { buyNow } = useBuyNowProducts();
-  const dashboard = usersdata.find((roll) => roll.email === user?.email);
+  const dashboard = usersdata?.find((roll) => roll.email === user?.email);
 
   return (
     <div
@@ -53,7 +53,7 @@ const Navber = () => {
 
                       <Link to="/" className="py-1 px-5 bg-[#07163d] text-center hover:bg-[#01040a] rounded ">Home</Link>
                       <Link to="/allProducts" className="py-1 px-5 bg-[#07163d] text-center hover:bg-[#01040a] rounded">All Product</Link>
-                      {dashboard.roll ? (
+                      {dashboard?.roll==="Admin" ? (
                         <Link to="/dashboard/users" className="py-1 px-5 bg-[#07163d] text-center hover:bg-[#01040a] rounded">Dashboard</Link>
                       ) : (
                         ""
@@ -115,7 +115,7 @@ const Navber = () => {
 
             {user ? (
               <>
-                {dashboard.roll ? (
+                {dashboard?.roll ? (
                   <Link to="/dashboard/users">Dashboard</Link>
                 ) : (
                   ""

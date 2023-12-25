@@ -3,13 +3,17 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import Auth from "../Share/AuthProvider/Auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
+import useAxios from "../Share/Hooks/useAxios";
 const SignUp = () => {
   const [open, setOpen] = useState(true);
-  const { googleLogin } = Auth();
+  const { googleLogin,createUser,logout } = Auth();
   const { register, handleSubmit, reset } = useForm();
+  const axiosSecure = useAxios()
+  const navigate = useNavigate()
   const onSubmit = (data) => {
     const name = data.name;
     const photo = data.photo;
@@ -20,9 +24,9 @@ const SignUp = () => {
         displayName: name,
         photoURL: photo,
       }).then((result) => {
-        const userInfo = { name, email, photo };
+        const userInfo = { name, email, photo, roll: "user" };
         axiosSecure.post("/usersdata", userInfo).then((result) => {
-          logOut();
+          logout()
           if (result) {
             navigate("/login");
             Swal.fire({
