@@ -7,6 +7,9 @@ const MobilesCrad = ({ mobile }) => {
   const {user} = Auth()
   const navigate = useNavigate()
   const axiosSecure = useAxios()
+  
+  const { brand_image, brand_name, memory, type, processor, price, os, name } =
+    mobile;
   const hendelShopClick = ()=>{
     const buynowInfo = {
         brand_name: brand_name,
@@ -17,7 +20,6 @@ const MobilesCrad = ({ mobile }) => {
         user_photo: user?.photoURL,
         state: 'Processin'
     }
-
     axiosSecure.post('/buynow', buynowInfo)
     .then(res => {
         if(res.data.insertedId){
@@ -34,8 +36,6 @@ const MobilesCrad = ({ mobile }) => {
         }
     })
 }
-  const { brand_image, brand_name, memory, type, processor, price, os, name } =
-    mobile;
   return (
     <div>
       <div className="card card-compact bg-gradient-to-r from-[#07163d] to-[#3D8AD0] shadow-xl h-full relative">
