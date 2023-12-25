@@ -17,7 +17,7 @@ const totalPages = Math.ceil(usersdata.length / ItemsPerPage);
   return (
     <section>
       <ShareTitle heading="User" title="All User Information" />
-      <div className="md:w-9/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="md:w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {currentItems?.map((data) => (
           <AllUsersHomeCrad key={data._id} data={data} />
         ))}
