@@ -7,10 +7,10 @@ import useBuyNowProducts from "./Hooks/useBuyNowProducts";
 import useUsers from "./Hooks/useUsers";
 const Navber = () => {
   const { user, logout } = Auth();
-  const { usersdata } = useUsers();
   const { buyNow } = useBuyNowProducts();
+  const { usersdata } = useUsers();
   const dashboard = usersdata?.find((roll) => roll.email === user?.email);
-
+  const confrim = buyNow?.filter(confirm => confirm.state==="Confirm")
   return (
     <div
       className={`border-b border-[#3D8AD0] bg-gradient-to-r from-[#07163d] to-[#3D8AD0] shadow sticky top-0 left-0 z-30`}
@@ -64,7 +64,7 @@ const Navber = () => {
                             <FaShoppingCart />
                           </button>
                           <span className="indicator-item badge badge-secondary bottom-0">
-                            {buyNow ? buyNow.length : 0}+
+                            {confrim ? confrim.length : 0}+
                           </span>
                         </div>
                       </Link>
@@ -115,7 +115,7 @@ const Navber = () => {
 
             {user ? (
               <>
-                {dashboard?.roll ? (
+                {dashboard?.roll==="Admin" ? (
                   <Link to="/dashboard/users">Dashboard</Link>
                 ) : (
                   ""
@@ -126,7 +126,7 @@ const Navber = () => {
                       <FaShoppingCart />
                     </button>
                     <span className="indicator-item badge badge-secondary bottom-0">
-                      {buyNow ? buyNow.length : 0}+
+                    {confrim ? confrim.length : 0}+
                     </span>
                   </div>
                 </Link>

@@ -4,8 +4,9 @@ import Loading from "../companent/Loading";
 
 const BuyNowProducts = () => {
   const { buyNow, isLoading, refetch } = useBuyNowProducts();
+  const confrim = buyNow?.filter(confirm => confirm.state==="Confirm")
   return (
-    <div >
+    <div className="mb-10">
         <div className="relative">
       <img
         src="https://plus.unsplash.com/premium_photo-1682088974202-def5b4b8f31b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fHNob3AlMjBjb3VudGVyJTIwbW9iaWxlfGVufDB8fDB8fHww"
@@ -37,7 +38,7 @@ const BuyNowProducts = () => {
                 </tr>
               </thead>
               <tbody>
-                {buyNow?.map((userAll, i) => (
+                {confrim?.map((userAll, i) => (
                   <BuyNowProductstTable key={i} buyNowSingle={userAll} i={i} refetch={refetch}/>
                 ))}
               </tbody>

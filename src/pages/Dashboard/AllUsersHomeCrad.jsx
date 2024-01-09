@@ -3,7 +3,7 @@
 const AllUsersHomeCrad = ({data}) => {
     const {name, photo} = data;
     return (
-        <div className="flex flex-row flex-wrap-reverse bg-[#07163d] p-4 rounded justify-center mt-8">
+        <div  data-aos="zoom-out-up" className="flex flex-row flex-wrap-reverse bg-[#07163d] p-4 rounded justify-center mt-8">
 			<div className="flex flex-col justify-center w-full px-8 mx-6 my-12 bg-gradient-to-t  from-[#07163d] to-[#3D8AD0] text-white text-center rounded-md md:w-96 lg:w-80 xl:w-64  ">
 				<img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full " src={photo} />
 				<div className="flex-1 my-4">

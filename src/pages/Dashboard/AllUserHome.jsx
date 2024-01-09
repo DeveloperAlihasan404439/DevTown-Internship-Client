@@ -6,7 +6,7 @@ import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
 
 const AllUserHome = () => {
-    const [currentPage, setCurrentPage] = useState(1);
+const [currentPage, setCurrentPage] = useState(1);
 const { usersdata } = useUsers();
 
 const ItemsPerPage = 6;

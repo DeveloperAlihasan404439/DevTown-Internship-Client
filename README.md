@@ -3,6 +3,8 @@
 ## [Live Link](https://internship-task-devonw-alihasan.surge.sh) <br/>
 ## [Server Github Link](https://github.com/DeveloperAlihasan404439/DevTown-Internship-Server) 
 
+# Admin Email : julfiker755.bd@gmail.com,
+### Admin Password : 123456
 
 I would like to explain everything in the assignment task given by you.
 

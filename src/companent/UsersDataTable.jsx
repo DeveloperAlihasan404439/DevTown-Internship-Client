@@ -49,10 +49,10 @@ const UsersDataTable = ({ userAll, i, refetch }) => {
       <td className="text-lg text-black text-center">{email}</td>
       <td className="text-lg text-black flex-1 w-[100px]">
         <div
-          className="bg-[#07163d] text-3xl text-white flex justify-center py-2 rounded"
+          className={`${roll==="Admin"?'bg-[#07163d]':"bg-[#215ae9]"}  text-3xl text-white flex justify-center py-2 rounded`}
         >
             {
-                roll?
+                roll==="Admin"?
                 <FaUserTie />:<FaUserFriends/>
             }
         </div>
@@ -60,7 +60,7 @@ const UsersDataTable = ({ userAll, i, refetch }) => {
       <td className="text-lg text-black flex-1 w-[100px]">
         <div
           onClick={() => hendelUpdated(_id)}
-          className="bg-[#07163d] text-3xl text-white flex justify-center py-2 rounded"
+          className="bg-orange-400 text-3xl text-white flex justify-center py-2 rounded"
         >
           <MdSystemUpdateAlt />
         </div>
@@ -68,7 +68,7 @@ const UsersDataTable = ({ userAll, i, refetch }) => {
       <td className="text-lg text-black flex-1 ">
         <div
           onClick={() => hendelDelete(_id)}
-          className="bg-[#07163d] text-3xl text-white flex justify-center py-2 rounded"
+          className="bg-red-500 text-3xl text-white flex justify-center py-2 rounded"
         >
           <RiDeleteBin2Fill />
         </div>
